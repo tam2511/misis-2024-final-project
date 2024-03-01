@@ -21,9 +21,8 @@ class Generator(object):
         self._pipe = AnimateDiffPipeline.from_pretrained("emilianJR/epiCRealism", motion_adapter=adapter,
                                                    torch_dtype=torch.float16)
         self._pipe.scheduler = LCMScheduler.from_config(self._pipe.scheduler.config, beta_schedule="linear")
-
-        self._pipe.load_lora_weights("wangfuyun/AnimateLCM", weight_name="sd15_lora_beta.safetensors",
-                               adapter_name="lcm-lora")
+        # self._pipe.load_lora_weights("wangfuyun/AnimateLCM", weight_name="sd15_lora_beta.safetensors",
+        #                        adapter_name="lcm-lora")
         self._pipe.set_adapters(["lcm-lora"], [0.8])
 
         self._pipe.enable_vae_slicing()
@@ -35,7 +34,7 @@ class Generator(object):
             negative_prompt: str = "bad quality, worse quality, low resolution",
             num_frames: int = 16,
             num_inference_steps: int = 6
-    ) -> Generator[bytes]:
+    ) -> Generator[bytes, None, None]:
         output = self._pipe(
             prompt=text,
             negative_prompt=negative_prompt,

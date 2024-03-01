@@ -1,0 +1,5 @@
+transformers
+diffusers
+sentencepiece
+accelerate
+peft

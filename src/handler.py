@@ -16,7 +16,7 @@ class Handler(object):
             text: str,
             translator_kwargs: Optional[Dict] = None,
             generator_kwargs: Optional[Dict] = None,
-    ) -> Generator[bytes]:
+    ) -> Generator[bytes, None, None]:
         if translator_kwargs is None:
             translator_kwargs = dict()
         eng_text = self._translator(
