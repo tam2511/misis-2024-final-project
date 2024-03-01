@@ -1,4 +1,4 @@
-from typing import Generator, Dict, Optional
+from typing import Dict, Optional
 
 from src.translator import Translator
 from src.generator import Generator as _Generator
@@ -16,7 +16,7 @@ class Handler(object):
             text: str,
             translator_kwargs: Optional[Dict] = None,
             generator_kwargs: Optional[Dict] = None,
-    ) -> Generator[bytes, None, None]:
+    ) -> str:
         if translator_kwargs is None:
             translator_kwargs = dict()
         eng_text = self._translator(
@@ -26,8 +26,7 @@ class Handler(object):
 
         if generator_kwargs is None:
             generator_kwargs = dict()
-        generator = self._generator(
+        return self._generator(
             text=eng_text,
             **generator_kwargs
         )
-        return generator

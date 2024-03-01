@@ -20,7 +20,7 @@ handler = Handler()
 def read_root(
         prompt: Prompt
 ):
-    generator = handler(
+    result = handler(
         text=prompt.text,
         generator_kwargs=dict(
             num_steps=prompt.num_steps,
@@ -28,7 +28,7 @@ def read_root(
             num_frames=prompt.num_frames,
         )
     )
-    return generator
+    return result
 
 if __name__ == '__main__':
-    uvicorn.run(app, host='127.0.0.1', port='8889')
+    uvicorn.run(app, host='0.0.0.0', port=8889)

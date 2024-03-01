@@ -3,16 +3,25 @@
 ## Install
 
 ```
-pip install ...
+pip install -r requirements.txt
 ```
 
 ## Using
 
 ```
-uvicorn api:app --host 127.0.0.1 --port 11111
+python run.py
 ```
 
 And use it in browser:
 ```
 127.0.0.1/docs
+```
+
+## Docker
+```
+docker build -t misis_project:latest .
+```
+
+```
+docker run -p 8889:8889 [--gpus=all] misis_project:latest
 ```

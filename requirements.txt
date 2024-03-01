@@ -3,3 +3,6 @@ diffusers
 sentencepiece
 accelerate
 peft
+fastapi
+uvicorn
+sacremoses
